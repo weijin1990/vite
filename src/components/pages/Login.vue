@@ -43,6 +43,15 @@
       @click="actionBtn"
     >ログイン</v-btn>
 
+    <v-btn
+      block
+      class="mb-8"
+      color="green"
+      size="large"
+      variant="tonal"
+      @click="fetchBtn"
+    >API(TEST PAGE)</v-btn>
+
     <v-card-text class="text-center">
       <a
         class="text-blue text-decoration-none"
@@ -71,6 +80,9 @@ export default {
   methods: {
     actionBtn(ev) {
       this.$router.push({ path: '/home' });
+    },
+    fetchBtn(ev) {
+      this.$router.push({ path: '/fetch' });
     }
   }
 }
