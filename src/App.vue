@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
@@ -12,7 +12,22 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+</template> -->
+
+<template>
+  <header>App Header</header>
+  <router-view></router-view>
+  <footer>App Footer</footer>
 </template>
+
+<script>
+import { RouterView } from 'vue-router';
+
+export default {
+    name: 'App',
+    components: { RouterView }
+};
+</script>
 
 <style scoped>
 .logo {
