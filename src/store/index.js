@@ -25,7 +25,6 @@ let store = {
     async fetchTestData(state) {
       try {
         const res = await httpClient.get('https://run.googleapis.com/$discovery/', 'rest', 'version=v2');
-        console.log('res:' + await res.data);
         state.commit('setTestData', res.data);
       } catch (error) {
         console.error('Error fetching Test data:', error)

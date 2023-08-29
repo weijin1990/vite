@@ -25,7 +25,14 @@ import { RouterView } from 'vue-router';
 
 export default {
     name: 'App',
-    components: { RouterView }
+    components: { RouterView },
+    watch: {
+      '$route' (to, from) {
+        if (to.meta.title !== void 0) {
+          document.title = to.meta.title;
+        }
+      }
+    }
 };
 </script>
 

@@ -74,7 +74,6 @@ export default {
   },
   async mounted() {
     await this.$store.dispatch('fetchTestData');
-    console.log(this.$store.getters['getTestData'])
     this.svcres = await this.$store.getters['getTestData'];
   },
   methods: {
