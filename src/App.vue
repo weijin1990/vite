@@ -16,7 +16,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
 
-<v-app>
+<v-app  :style="{ 'margin-left': drawer ? '262px' : '0' }">
 
 <v-toolbar color="#FFFFFF">
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
@@ -52,7 +52,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 
     <v-main>
-      <v-navigation-drawer
+      <v-navigation-drawer app v-model="drawer"
     class="bg-white"
     theme="dark"
     permanent
@@ -106,6 +106,7 @@ export default {
           this.$router.push({ path: newTab.path });
     },
     data: () => ({
+      drawer: true,
       links: [
         'Home',
         'About Us',
