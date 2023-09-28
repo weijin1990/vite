@@ -1,6 +1,4 @@
 <template>
-  <v-sheet class="full-screen pa-12" rounded>
-    <h1 class="text-blue">FiCS</h1>
 
     <v-card
       class="mx-auto px-6 py-8"
@@ -64,7 +62,6 @@
     </v-card-text>
  
     </v-card>
-  </v-sheet>
 </template>
 
 <script>
@@ -89,7 +86,4 @@ export default {
 </script>
 
 <style>
-  .full-screen {
-    width: 800px;
-  }
 </style>
