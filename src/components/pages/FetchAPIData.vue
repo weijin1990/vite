@@ -54,20 +54,12 @@ export default {
     }
   },
   async mounted() {
-    this.amplifyRes = await this.$store.dispatch('fetchAmplifyData');
+    // this.amplifyRes = await this.$store.dispatch('fetchAmplifyData');
     // this.amplifyRes = await this.$store.getters['getTestData'];
   },
   methods: {
     actionBtn(ev) {
       this.$router.push({ path: '/home' });
-    },
-    async fetchData() {
-      try {
-        const response = await API.get('YourApiName', '/path'); // 替换为你的API名称和路径
-        this.data = response.data;
-      } catch (error) {
-        console.error('获取数据时出错：', error);
-      }
     },
   }
 }

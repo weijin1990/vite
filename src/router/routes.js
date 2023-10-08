@@ -5,9 +5,9 @@ import Dashboard from '@/components/pages/Dashboard.vue';
 
 export default [
   // { path: '/', component: Login, meta: { title: 'ログイン|Fics' }},
-  // { path: '/home', component: HelloWorld, meta: { title: 'ホーム|Fics' }},
-  
-  { path: '/', component: Dashboard, meta: { title: 'Homeページ|Fics' } },
+    
+  { path: '/', component: HelloWorld, meta: { title: 'ホーム|Fics' }},
+  { path: '/home', component: HelloWorld, meta: { title: 'ホーム|Fics' }},
   { path: '/fetch', component: FetchAPIData, meta: { title: 'APIテスト|Fics' } },
   { path: '/dashboard', component: Dashboard, meta: { title: 'Dashboard|Fics' } },
 ];
