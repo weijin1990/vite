@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.2.96",
+    "aws-amplify": "^5.3.11",
     "axios": "^1.5.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4",

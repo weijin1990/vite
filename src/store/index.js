@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import httpClient from "@/api/client";
+import { API } from 'aws-amplify';
 // import { actions } from "./actions";
 // import { getters } from "./getters";
 // import { mutations } from "./mutations";
@@ -29,7 +30,27 @@ let store = {
       } catch (error) {
         console.error('Error fetching Test data:', error)
       }
-    }
+    },
+    async fetchAmplifyData(state) {
+      try {
+        const requestData = {
+          firstName: 'John',
+          lastName: 'Doe'
+        };
+        const res = await API.post('FicsPocApi', '/poc/items', {
+          body: requestData,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+    
+        return res.data;
+        console.log('API响应：', apiResponse);
+      } catch (error) {
+        console.error('发生错误：', error);
+      }
+    },
+
   },
   getters: {
     getTestData(state) {
