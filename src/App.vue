@@ -125,7 +125,7 @@ export default {
         // { name: '顧客カルテ', path: '/' }, 
         // { name: '【フラット】顧客情報', path: '/' }, 
         // { name: '【信託】顧客情報', path: '/' }, 
-        { name: 'ホーム', path: '/dashboard' }, 
+        { name: 'ホーム', path: '/' }, 
         { name: 'DUMMY', path: '/fetch' }, 
         ],
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
