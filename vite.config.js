@@ -13,7 +13,9 @@ export default defineConfig({
   // },
   resolve: {
     alias: {
-      '@': '/src'
+      '@': '/src',
+      find: './runtimeConfig',
+      replacement: './runtimeConfig.browser', // ensures browser compatible version of AWS JS SDK is used
     }
   }
 })

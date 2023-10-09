@@ -1,0 +1,30 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ficsvue3app-dev-202132-authRole",
+      "UnauthRoleArn": "arn:aws:iam::275850482169:role/amplify-ficsvue3app-dev-202132-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::275850482169:role/amplify-ficsvue3app-dev-202132-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-ficsvue3app-dev-202132-deployment",
+      "UnauthRoleName": "amplify-ficsvue3app-dev-202132-unauthRole",
+      "StackName": "amplify-ficsvue3app-dev-202132",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:275850482169:stack/amplify-ficsvue3app-dev-202132/d62421d0-65cc-11ee-90b6-0ad98d96b631",
+      "AmplifyAppId": "d6i9dt7t9arz4",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-ficsvue3app-dev-202132-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "function": {
+        "TestFunc": {
+          "deploymentBucketName": "amplify-ficsvue3app-dev-202132-deployment",
+          "s3Key": "amplify-builds/TestFunc-443651482f5454417849-build.zip"
+        }
+      },
+      "auth": {
+        "ficsvue3app": {}
+      },
+      "api": {
+        "api98ddd372": {}
+      }
+    }
+  }
+}

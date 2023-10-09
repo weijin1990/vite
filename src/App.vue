@@ -16,8 +16,9 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
 
-<v-app  :style="{ 'margin-left': drawer ? '262px' : '0' }">
+<v-app  :style="{ 'margin-left': login && drawer ? '262px' : '0' }">
 
+  <template v-if="login">
 <v-toolbar color="#FFFFFF">
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
@@ -84,6 +85,14 @@ import HelloWorld from './components/HelloWorld.vue'
       </v-col>
     </v-row>
   </v-footer>
+</template>
+<template v-else>
+  <v-main>
+  <v-container fluid>
+    <router-view></router-view>
+    </v-container>
+  </v-main>
+</template>
 
 </v-app>
 </template>
@@ -101,8 +110,12 @@ export default {
         }
       }
     },
+    computed: {
+      login() {
+        return this.$store.getters['getSignInFlg'];
+      }
+    },
     activeTab(newTab) {
-
           this.$router.push({ path: newTab.path });
     },
     data: () => ({
