@@ -3,10 +3,10 @@
 
 const awsmobile = {
     "aws_project_region": "ap-northeast-1",
-    "aws_cognito_identity_pool_id": "ap-northeast-1:ca8c6819-fc8c-4e61-b00d-d2d74ec3f5de",
+    "aws_cognito_identity_pool_id": "ap-northeast-1:f480c355-1318-4cef-9acc-3db077fb008d",
     "aws_cognito_region": "ap-northeast-1",
-    "aws_user_pools_id": "ap-northeast-1_EWe4uvUbV",
-    "aws_user_pools_web_client_id": "30vgpav4u86m7o95qngptr8bg4",
+    "aws_user_pools_id": "ap-northeast-1_RnOkRbu5Z",
+    "aws_user_pools_web_client_id": "2q5nsbiv9ojqj2fr0ellp26c8c",
     "oauth": {},
     "aws_cognito_username_attributes": [],
     "aws_cognito_social_providers": [],
@@ -26,8 +26,8 @@ const awsmobile = {
     ],
     "aws_cloud_logic_custom": [
         {
-            "name": "api133340e8",
-            "endpoint": "https://g273fkjzj8.execute-api.ap-northeast-1.amazonaws.com/dev",
+            "name": "api3197c32d",
+            "endpoint": "https://uzi7gnotaa.execute-api.ap-northeast-1.amazonaws.com/dev",
             "region": "ap-northeast-1"
         }
     ]
