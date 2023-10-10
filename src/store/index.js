@@ -44,11 +44,11 @@ let store = {
           firstName: 'John',
           lastName: 'Doe'
         };
-        const res = await API.post('api98ddd372', '/test', {
+        const res = await API.post('api133340e8', '/test', {
           body: requestData,
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${(await Auth.currentSession())
+            'Authorization': `Bearer ${(await Auth.currentSession())
               .getIdToken()
               .getJwtToken()}`
             }

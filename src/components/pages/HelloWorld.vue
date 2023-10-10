@@ -37,7 +37,7 @@
 </script>
 
 <template>
-  <authenticator :services="services" initial-state="signUp">
+  <authenticator :services="services">
     <template v-slot="{ user, signOut }">
       <h1>ログイン成功！</h1>
       <p>ログインID： {{ user.username }}</p>
