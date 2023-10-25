@@ -15,21 +15,13 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  font-weight: 400;
+  color: #0B5CAB;
+  text-decoration: none;
 }
 a:hover {
-  color: #535bf2;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  color: #014486;
+  text-decoration: underline;
 }
 
 body {
@@ -72,7 +64,7 @@ button:focus-visible {
   width: 100%;
   margin: 0;
   padding: 0;
-  text-align: center;
+  text-align: left;
 }
 
 @media (prefers-color-scheme: light) {
@@ -84,6 +76,6 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #0070d2;
   }
 }

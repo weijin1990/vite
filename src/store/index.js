@@ -1,5 +1,5 @@
-import { createStore } from "vuex";
-import httpClient from "@/api/client";
+import { createStore } from 'vuex';
+import httpClient from '@/api/client';
 import { Auth, API } from 'aws-amplify';
 // import { actions } from "./actions";
 // import { getters } from "./getters";
@@ -27,34 +27,26 @@ let store = {
     }
   },
   actions: {
-    async fetchTestData(state) {
-      try {
-        const res = await httpClient.get('https://run.googleapis.com/$discovery/', 'rest', 'version=v2');
-        state.commit('setTestData', res.data);
-      } catch (error) {
-        console.error('Error fetching Test data:', error)
-      }
-    },
     saveSignInFlg(state, flg) {
       state.commit('setSignInFlg', flg);
     },
-    async fetchAmplifyData(state) {
+    async callFetchSocialInfoList(state) {
       try {
         const requestData = {
-          firstName: 'John',
-          lastName: 'Doe'
+          // TODO 検索条件編集
+          firstName: 'Foo',
+          lastName: 'Bar'
         };
-        const res = await API.post('api133340e8', '/test', {
+        const res = await API.post('api3197c32d', '/ec2', {
           body: requestData,
           headers: {
-            'Content-Type': 'application/json',
             'Authorization': `Bearer ${(await Auth.currentSession())
               .getIdToken()
               .getJwtToken()}`
-            }
+          }
         });
     
-        return res.data;
+        return res;
       } catch (error) {
         console.error('API ERROR:', error);
       }

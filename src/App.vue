@@ -1,148 +1,102 @@
-<!-- <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
-</template> -->
+  <v-app>
+    <template v-if="login">
+      <v-toolbar class="fixed-toolbar">
+        <v-app-bar-nav-icon />
 
-<template>
+        <v-toolbar-title>FiCS</v-toolbar-title>
 
-<v-app  :style="{ 'margin-left': login && drawer ? '262px' : '0' }">
+        <v-spacer />
 
-  <template v-if="login">
-<v-toolbar color="#FFFFFF">
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-      <v-toolbar-title>FiCS</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-
-      <template v-slot:extension>
-        <v-tabs
-          v-model="activeTab"
-          align-tabs="title"
-        >
-          <v-tab
-            v-for="item in paths"
-            :to="{ path: item.path }"
-            :key="item.name"
-            :value="item.name"
-          >
-            {{ item.name }}
-          </v-tab>
-        </v-tabs>
-      </template>
-    </v-toolbar>
-
-
-    <v-main>
-      <v-navigation-drawer app v-model="drawer"
-    class="bg-white"
-    theme="dark"
-    permanent
-  >
-    <v-list color="transparent">
-      <v-list-item prepend-icon="mdi-cogs" title="設定のホーム"></v-list-item>
-      <v-list-item prepend-icon="mdi-apple-keyboard-command" title="管理"></v-list-item>
-      <v-list-item prepend-icon="mdi-account-box" title="ユーザ"></v-list-item>
-    </v-list>
-
-    <template v-slot:append>
-      <div class="pa-2">
-        <v-btn block>
-          ログアウト
+        <v-btn icon>
+          <v-icon>mdi-magnify</v-icon>
         </v-btn>
-      </div>
-    </template>
-  </v-navigation-drawer>
 
-      <v-container fluid>
-        <router-view></router-view>
-      </v-container>
+        <v-btn icon>
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+
+        <template #extension>
+          <v-tabs
+            v-model="activeTab"
+            align-tabs="title"
+          >
+            <v-tab
+              v-for="item in paths"
+              :key="item.name"
+              :to="{ path: item.path }"
+              :value="item.name"
+            >
+              {{ item.name }}
+            </v-tab>
+          </v-tabs>
+        </template>
+      </v-toolbar>
+
+      <v-main>
+        <v-container
+          class="main-container"
+          fluid
+        >
+          <router-view />
+        </v-container>
       </v-main>
-
-  <v-footer class="bg-grey-darken-2" style="max-height: 50px;">
-    <v-row justify="center" no-gutters>
-      <v-col class="text-center" cols="12">
-        Copyright (C) <strong>CSC</strong>. All rights reserved({{ new Date().getFullYear() }})
-      </v-col>
-    </v-row>
-  </v-footer>
-</template>
-<template v-else>
-  <v-main>
-  <v-container fluid>
-    <router-view></router-view>
-    </v-container>
-  </v-main>
-</template>
-
-</v-app>
+    </template>
+    <template v-else>
+      <v-main>
+        <v-container fluid>
+          <router-view />
+        </v-container>
+      </v-main>
+    </template>
+  </v-app>
 </template>
 
 <script>
 import { RouterView } from 'vue-router';
+import { Auth } from 'aws-amplify';
 
 export default {
-    name: 'App',
-    components: { RouterView },
-    watch: {
-      '$route' (to, from) {
-        if (to.meta.title !== void 0) {
-          document.title = to.meta.title;
-        }
+  name: 'App',
+  components: { RouterView },
+  mixins: [Auth],
+  data: () => ({
+    drawer: true,
+    activeTab: null,
+    paths: [
+      { name: 'ホーム', path: '/home' }, 
+      { name: '顧客一覧', path: '/customer' }, 
+    ],
+  }),
+  computed: {
+    login() {
+      console.log('current path:', this.$route.path);
+      console.log('current login:', this.$route.path !== '/' && this.$route.path !== '/login');
+      return this.$route.path !== '/' && this.$route.path !== '/login';
+    },
+
+  },
+  watch: {
+    '$route' (to, from) {
+      if (to.meta.title !== void 0) {
+        document.title = to.meta.title;
+      }
+    }
+  },
+  activeTab(newTab) {
+    this.$router.push({ path: newTab.path });
+  },
+  methods: {
+    async handleSignOut() {
+      try {
+        await Auth.signOut();
+        this.$router.push({ path: '/login' });
+        console.log('Sign out successful');
+      } catch (error) {
+        console.error('Error signing out:', error);
       }
     },
-    computed: {
-      login() {
-        return this.$store.getters['getSignInFlg'];
-      }
-    },
-    activeTab(newTab) {
-          this.$router.push({ path: newTab.path });
-    },
-    data: () => ({
-      drawer: true,
-      links: [
-        'Home',
-        'About Us',
-        'Team',
-        'Services',
-        'Blog',
-        'Contact Us',
-      ],
-      activeTab: null,
-      paths: [
-        // { name: '設定', path: '/dashboard' }, 
-        // { name: 'ホーム', path: '/home' }, 
-        // { name: 'TEST', path: '/fetch' }, 
-        // { name: 'レポート', path: '/' }, 
-        // { name: '顧客検索', path: '/' }, 
-        // { name: '顧客カルテ', path: '/' }, 
-        // { name: '【フラット】顧客情報', path: '/' }, 
-        // { name: '【信託】顧客情報', path: '/' }, 
-        { name: 'ホーム', path: '/' }, 
-        { name: 'DUMMY', path: '/fetch' }, 
-        ],
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    }),
+  }
 };
 </script>
 
@@ -170,5 +124,31 @@ html, body, #app {
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+.fixed-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #FFFFFF; 
+}
+.main-container {
+  padding-top: 132px;
+  background-image: url("@/assets/img/lbg.png");
+  background-size: contain;
+  background-color: #B0C4DF
+}
+.v-main {
+  background-color: #F4F6F9 !important;
+}
+</style>
+
+<style>
+/* Vuetify css override */
+.v-toolbar__content {
+  /* background-image: url("@/assets/img/toolbar-bg.jpg");
+  background-size: cover; */
+  background: repeating-linear-gradient(45deg, rgb(84,105,141), rgb(84,105,141) 20px, rgba(84,105,141,.97) 20px, rgba(84,105,141,.97) 40px);
 }
 </style>

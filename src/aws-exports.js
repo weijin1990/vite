@@ -30,7 +30,10 @@ const awsmobile = {
             "endpoint": "https://uzi7gnotaa.execute-api.ap-northeast-1.amazonaws.com/dev",
             "region": "ap-northeast-1"
         }
-    ]
+    ],
+    "aws_content_delivery_bucket": "ficsvue3app-20231011222108-hostingbucket-dev",
+    "aws_content_delivery_bucket_region": "ap-northeast-1",
+    "aws_content_delivery_url": "https://dxdu5ooibvoko.cloudfront.net"
 };
 
 
